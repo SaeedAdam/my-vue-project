@@ -48,7 +48,7 @@ export default defineComponent({
         <div class="name">{{ model.name }} [{{ model.selected }}]</div>
     </li>
 </template>
-  
+
 <style>
 li.item {
     padding: 5px;

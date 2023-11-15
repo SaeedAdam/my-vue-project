@@ -10,16 +10,18 @@ defineProps<{ items: ItemInterface[] }>()
 // define emits for custom events
 const emits = defineEmits<{ (e: 'selectItem', id: number): any }>()
 
-const handleClick = (item: ItemInterface) => {
-    emits('selectItem', item.id);
-};
+const onSelectItem = (id: number) => {
+    // emit a custom event
+    emits('selectItem', id)
+}
+
 </script>
 
 <template>
     <div>
         <h3>Items:</h3>
         <ul>
-            <ItemComponent v-for="item in items" :key="item.id" :model="item" @click="handleClick(item)" />
+            <ItemComponent v-for="item in items" :key="item.id" :model="item" @selectItem="onSelectItem" />
         </ul>
     </div>
 </template>
