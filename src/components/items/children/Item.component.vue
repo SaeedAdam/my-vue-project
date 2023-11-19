@@ -52,12 +52,16 @@ export default defineComponent({
 <style>
 li.item {
     padding: 5px;
-    outline: solid 1px #eee;
+    outline: solid 1px #ccc;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    box-shadow: 0 0 3px #bbb;
     display: flex;
     align-items: center;
     height: 30px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.75s ease;
+    background-color: #f2f2f2;
 }
 
 li.item .name {
@@ -76,6 +80,6 @@ li.item.selected .selected-indicator {
 }
 
 li.item:hover {
-    background-color: #eee;
+    background-color: rgb(120, 201, 185);
 }
 </style>
