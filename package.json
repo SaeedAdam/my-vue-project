@@ -19,6 +19,7 @@
     "@testing-library/vue": "^8.0.0",
     "@types/node": "^20.9.0",
     "@vitejs/plugin-vue": "^4.2.3",
+    "axios": "^1.6.2",
     "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
