@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ItemInterface } from '../../models';
 import ItemComponent from './children/Item.component.vue';
-import Loader from './shared/Loader.component.vue';
+import Loader from '@/components/shared/Loader.component.vue';
 
 // expose a property called items with a default value of a blank array
 defineProps<{

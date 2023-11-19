@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "dev": "vite --mode mock",
+    "build": "vue-tsc && vite build  --mode production",
+    "build-mock": "vue-tsc --noEmit && vite build --mode mock",
     "preview": "vite preview",
     "test": "vitest run",
     "test-watch": "vitest watch",
