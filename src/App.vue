@@ -24,15 +24,14 @@ onMounted(() => {
 
 
 watchEffect(() => {
-    document.dir = t('text.direction');
+  document.dir = t('text.direction');
 
-    document.documentElement.lang = currentLocale.value;
+  document.documentElement.lang = currentLocale.value;
 })
 </script>
 
 <template>
-  <div class="home">
-    <LocaleSelector />
+  <div class="home m-2 p-2 border-2 border-blue-300 rounded-lg">
     <div class="locale-selector">
       <div v-if="isLoadingLocale">Loading locale data...</div>
       <div v-for="item in locales">
@@ -48,11 +47,3 @@ watchEffect(() => {
     <DebugFormatters :show="true" />
   </div>
 </template>
-
-<style scoped>
-.home {
-  padding: 20px;
-  max-width: 50%;
-  margin: 0 auto;
-}
-</style>
