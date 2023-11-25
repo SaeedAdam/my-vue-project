@@ -4,13 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --mode mock",
-    "build": "vue-tsc && vite build  --mode production",
-    "build-mock": "vue-tsc --noEmit && vite build --mode mock",
-    "preview": "vite preview",
-    "test": "vitest run",
-    "test-watch": "vitest watch",
-    "test-coverage": "vitest run --coverage"
+    "start": "npm run dev",
+    "dev": "vite --config vite.config.mock.ts --mode mock",
+    "build": "vue-tsc --noEmit && vite build --config vite.config.production.ts --mode production",
+    "build-mock": "vite build --config vite.config.mock.ts --mode mock",
+    "build-beta": "vite build --config vite.config.production.ts --mode beta",
+    "preview": "vite preview --config vite.config.mock.ts --mode mock",
+    "with-jsonserver": "vite --config vite.config.jsonserver.ts --mode jsonserver",
+    "json-server-api": "json-server --port 3111 --watch json-server/db.json",
+    "test": "vitest run --config vite.config.mock.ts --mode mock",
+    "test-watch": "vitest watch --config vite.config.mock.ts --mode mock",
+    "test-coverage": "vitest run --coverage --config vite.config.mock.ts --mode mock",
+    "pretty": "prettier -w \"./src/**/*.*{ts,vue,svelte,tsx,css,scss,html}\"",
+    "check": "npm run pretty; npm run test; npm run build-mock"
   },
   "dependencies": {
     "vue": "^3.3.4"

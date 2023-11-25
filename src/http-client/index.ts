@@ -1,7 +1,7 @@
 // file: src/http-client/index.ts
 
 import { HttpClientInterface } from "./models/HttpClient.interface";
-import { config } from "@/config"; // <-- uncomment (or add) this line
+import { config } from "@/config"; 
 
 import { HttpClientAxios } from "./models/HttpClient.axios";
 import { HttpClientFetch } from "./models/HttpClient.fetch";
