@@ -1,0 +1,16 @@
+{
+    "text.direction": "rtl",
+
+    "locale.selector.en-US": "الإنجليزية",
+    "locale.selector.it-IT": "الإيطالية",
+    "locale.selector.fr-FR": "الفرنسية",
+    "locale.selector.es-ES": "الإسبانية",
+    "locale.selector.ar-SA": "العربية",
+    
+    "home.welcome": "مرحبا, هذه الرسالة مترجمة من الإنجليزية إلى العربية",
+
+    "navigation.home": "الصفحة الرئيسية",
+    "navigation.about": "حول",
+
+    "items.list.header": "قائمة العناصر"
+}

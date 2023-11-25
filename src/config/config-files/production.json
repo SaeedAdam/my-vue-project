@@ -32,7 +32,8 @@
       { "key": "en-US", "isDefault": true },
       { "key": "it-IT", "isDefault": false },
       { "key": "fr-FR", "isDefault": false },
-      { "key": "es-ES", "isDefault": false }
+      { "key": "es-ES", "isDefault": false },
+      { "key": "ar-SA", "isDefault": false }
     ],
     "localStorageCache": { 
       "enabled": true, 

@@ -1,8 +1,11 @@
 {
+  "text.direction": "ltr",
+
   "locale.selector.en-US": "Inglese",
   "locale.selector.it-IT": "Italiano",
   "locale.selector.fr-FR": "Francese",
   "locale.selector.es-ES": "Spagnolo",
+  "locale.selector.ar-SA": "العربية",
   
   "home.welcome": "Benvenuti: this message is localized in Italian",
 

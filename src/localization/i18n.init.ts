@@ -13,4 +13,4 @@ export const i18n = createI18n({
   silentTranslationWarn: true,
 });
 
-//console.log('i18n.mode', i18n.mode)
+console.log('i18n.mode', i18n.mode)

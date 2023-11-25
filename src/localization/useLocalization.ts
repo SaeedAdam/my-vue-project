@@ -46,8 +46,8 @@ const changeLocale = async (lcid: string) => {
     }
   }
 
-  //console.log('cacheEntry?.expiresAt - Date.now()', cacheEntry?.expiresAt - Date.now())
-  //console.log('typeof cacheEntry.json', typeof cacheEntry.json)
+  console.log('cacheEntry?.expiresAt - Date.now()', cacheEntry?.expiresAt - Date.now())
+  console.log('typeof cacheEntry.json', typeof cacheEntry.json)
 
   // check if we have cacheEntry and if matches app version and also did not expire
   if (
