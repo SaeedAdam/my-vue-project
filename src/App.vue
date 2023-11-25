@@ -9,6 +9,8 @@ import DebugFormatters from '@/components/shared/DebugFormatters.component.vue'
 // import a reference to useLocalization
 import { useLocalization } from '@/localization'
 
+import PrimitivesView from '@/views/Primitives.view.vue'
+
 // get what we need from useLocalization:
 const { t, locales, currentLocale, isLoadingLocale, changeLocale } = useLocalization()
 
@@ -43,7 +45,8 @@ watchEffect(() => {
       </div>
     </div>
     <h3>{{ t('home.welcome') }} [{{ currentLocale }}]</h3>
-    <ItemsView />
-    <DebugFormatters :show="true" />
+    <ItemsView v-if="false" />
+    <DebugFormatters :show="false" />
+    <PrimitivesView />
   </div>
 </template>

@@ -65,15 +65,8 @@ const handleClick = () => {
 </script>
 
 <template>
-  <button
-    type="button"
-    role="checkbox"
-    :data-testid="testid"
-    :aria-checked="checked"
-    :disabled="disabled"
-    :class="cssClass"
-    @click="handleClick"
-  >
+  <button type="button" role="checkbox" :data-testid="testid" :aria-checked="checked" :disabled="disabled"
+    :class="cssClass" @click="handleClick">
     <span :class="innerCssClass"></span>
   </button>
 </template>
