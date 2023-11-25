@@ -4,6 +4,8 @@
 import { onMounted, watchEffect } from 'vue'
 // import our ItemsView component
 import ItemsView from '@/views/Items.view.vue'
+// import a reference to the DebugFormatters component
+import DebugFormatters from '@/components/shared/DebugFormatters.component.vue'
 // import a reference to useLocalization
 import { useLocalization } from '@/localization'
 
@@ -30,6 +32,7 @@ watchEffect(() => {
 
 <template>
   <div class="home">
+    <LocaleSelector />
     <div class="locale-selector">
       <div v-if="isLoadingLocale">Loading locale data...</div>
       <div v-for="item in locales">
@@ -42,6 +45,7 @@ watchEffect(() => {
     </div>
     <h3>{{ t('home.welcome') }} [{{ currentLocale }}]</h3>
     <ItemsView />
+    <DebugFormatters :show="true" />
   </div>
 </template>
 
