@@ -1,85 +1,70 @@
+// file: src/components/items/children/Item.component.vue
 <script lang="ts">
 // import reference to Vue's defineComponent
-import { defineComponent, computed, PropType } from 'vue'
+import { defineComponent, computed, PropType } from "vue";
 // import a reference to our ItemInterace
-import type { ItemInterface } from '../../../models'
-// create our component with defineComponent 
+import type { ItemInterface } from "../../../models/items/Item.interface";
+
+import ElText from "@/components/primitives/text/ElText.vue";
+import ElToggle from "@/components/primitives/toggles/ElToggle.vue";
+
+// create our component with defineComponent
 export default defineComponent({
-    name: 'ItemComponent',
-    emits: ['selectItem'],
+    name: "ItemComponent",
+    emits: ["selectItem"],
+    components: {
+        ElText,
+        ElToggle,
+    },
     props: {
-        // add testid prop here as well
-        testid: {
-            default: 'not-set'
-        },
+        // expose a property called model of type ItemInterface
         model: {
             type: Object as PropType<ItemInterface>,
             default: () => {
-                return {}
-            }
-        }
+                return {};
+            },
+        },
+        testid: {
+            type: String,
+            default: "not-set",
+        },
+        isLast: {
+            type: Boolean,
+            default: false,
+        },
     },
     setup(props, { emit }) {
         // a computed property to return a different css class based on the selected value
         const cssClass = computed(() => {
-            let css = 'item'
-            if (props.model.selected) {
-                css += ' selected'
+            let css =
+                "item flex items-center justify-between cursor-pointer border border-l-4 list-none rounded-sm px-3 py-3";
+            if (props.model?.selected) {
+                css += " font-bold bg-pink-200 hover:bg-pink-100 selected";
+            } else {
+                css += " text-gray-500 hover:bg-gray-100";
             }
-            return css.trim()
-        })
+            if (!props.isLast) {
+                css += " border-b-0";
+            }
+            return css.trim();
+        });
 
         // on click event handler that will emit a @select custom event
         const handleClick = () => {
-            emit('selectItem', props.model.id)
-        }
+            emit("selectItem", props.model.id);
+        };
 
         return {
             cssClass,
-            handleClick
-        }
-    }
-})
+            handleClick,
+        };
+    },
+});
 </script>
 
 <template>
     <li :data-testid="testid" :class="cssClass" @click="handleClick">
-        <div class="selected-indicator">*</div>
-        <div class="name">{{ model.name }} [{{ model.selected }}]</div>
+        <ElText :testid="`${testid}-text`" tag="div" :text="model.name" />
+        <ElToggle :testid="`${testid}-toggle`" :checked="model.selected" />
     </li>
 </template>
-
-<style>
-li.item {
-    padding: 5px;
-    outline: solid 1px #ccc;
-    border-radius: 5px;
-    margin-bottom: 5px;
-    box-shadow: 0 0 3px #bbb;
-    display: flex;
-    align-items: center;
-    height: 30px;
-    cursor: pointer;
-    transition: background-color 0.75s ease;
-    background-color: #f2f2f2;
-}
-
-li.item .name {
-    margin-left: 6px;
-}
-
-li.item .selected-indicator {
-    font-size: 2em;
-    line-height: 0.5em;
-    margin: 10px 8px 0 8px;
-    color: lightgray;
-}
-
-li.item.selected .selected-indicator {
-    color: skyblue;
-}
-
-li.item:hover {
-    background-color: rgb(120, 201, 185);
-}
-</style>

@@ -26,7 +26,8 @@ const onSelectItem = (id: number) => {
         <h3>Items:</h3>
         <Loader v-show="loading" />
         <ul v-show="!loading">
-            <ItemComponent v-for="item in items" :key="item.id" :model="item" @selectItem="onSelectItem" />
+            <ItemComponent v-for="(item, index) in items" :key="item.id" :model="item" :isLast="index === items.length - 1"
+                @selectItem="onSelectItem" />
         </ul>
     </div>
 </template>

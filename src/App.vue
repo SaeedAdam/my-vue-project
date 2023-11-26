@@ -45,7 +45,7 @@ watchEffect(() => {
       </div>
     </div>
     <h3>{{ t('home.welcome') }} [{{ currentLocale }}]</h3>
-    <ItemsView v-if="false" />
+    <ItemsView />
     <DebugFormatters :show="false" />
     <PrimitivesView />
   </div>
