@@ -11,6 +11,8 @@ import { useLocalization } from '@/localization'
 
 import PrimitivesView from '@/views/Primitives.view.vue'
 
+import { Counter, SampleComp } from 'my-component-library'
+
 // get what we need from useLocalization:
 const { t, locales, currentLocale, isLoadingLocale, changeLocale } = useLocalization()
 
@@ -34,6 +36,10 @@ watchEffect(() => {
 
 <template>
   <div class="home m-2 p-2 border-2 border-blue-300 rounded-lg">
+    <div>
+      <SampleComp text="This is a sample component from my-component-library" />
+      <Counter />
+    </div>
     <div class="locale-selector">
       <div v-if="isLoadingLocale">Loading locale data...</div>
       <div v-for="item in locales">
