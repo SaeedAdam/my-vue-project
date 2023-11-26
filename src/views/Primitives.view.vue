@@ -5,8 +5,7 @@ import {
   ElText,
   ElButton,
   ElToggle,
-  ElIconAlert,
-  useModalDialog,
+  ElModalVue
 } from "@/components/primitives";
 
 const state = reactive({
@@ -24,39 +23,11 @@ const state = reactive({
       checked: false,
     },
   ],
+  isModalVisible: false,
 });
 
-const onOpenDialogClicked = async (id: string) => {
-  console.log("PrimitivesView: onOpeanDialogClicked", id);
-  // handle the new buttons with id "open-modal-x" (we'll be adding shortly)
-  if (id === "open-modal-1") {
-    // here we invoke our useModal with the custom labels for the buttons
-    // then we invoke modal.prompt() and await it
-    const result = await useModalDialog({
-      cancelLabel: "Cancel",
-      confirmLabel: "Ok",
-      primaryButtonType: "danger",
-    }).prompt("Do you want to delete this record?");
-    // the result will be true if the user click on COnfirm, or false if click on Cancel
-    console.log(
-      "----- PrimitivesView: onButtonClicked: modal-1 prompt result",
-      result,
-    );
-  } else if (id === "open-modal-2") {
-    // here we invoke our useModal with the custom labels for the buttons
-    // then we invoke modal.prompt() and await it
-    const result = await useModalDialog({
-      cancelLabel: "Cancel",
-      confirmLabel: "Confirm",
-      icon: ElIconAlert, // here we use the icon component created earlier
-      iconAddCss: "text-red-600",
-    }).prompt("Do you want to delete this record?", "");
-    // the result will be true if the user click on COnfirm, or false if click on Cancel
-    console.log(
-      "----- PrimitivesView: onButtonClicked: modal-2 prompt result",
-      result,
-    );
-  }
+const onOpenDialogClicked = () => {
+  state.isModalVisible = true;
 };
 
 const onButtonClicked = async (id: string) => {
@@ -79,69 +50,39 @@ const onToggleClicked = (id: string) => {
     <ElText tag="h1" addCss="text-gray-500" text="Primitives" />
     <ElText tag="h2" addCss="text-gray-500" text="ElText examples:" />
     <div class="p-6 border">
-      <ElText
-        tag="h2"
-        addCss="text-red-500"
-        text="Here ElText will render a <h2> element"
-      />
-      <ElText
-        tag="p"
-        addCss="text-red-700"
-        text="Here ElText will render a <p> element"
-      />
+      <ElText tag="h2" addCss="text-red-500" text="Here ElText will render a <h2> element" />
+      <ElText tag="p" addCss="text-red-700" text="Here ElText will render a <p> element" />
     </div>
 
     <ElText tag="h2" addCss="text-gray-500" text="ElButton examples:" />
     <div class="p-6 border space-x-2">
-      <ElButton
-        id="my-button-1"
-        :disabled="false"
-        label="This is a button"
-        @clicked="onButtonClicked"
-      />
-      <ElButton
-        id="my-button-2"
-        :disabled="true"
-        label="This is a disabled button"
-        @clicked="onButtonClicked"
-      />
-      <ElButton
-        id="open-modal-1"
-        :disabled="false"
-        label="Open modal 1"
-        @clicked="onOpenDialogClicked"
-      />
+      <ElButton id="my-button-1" :disabled="false" label="This is a button" @clicked="onButtonClicked" />
+      <ElButton id="my-button-2" :disabled="true" label="This is a disabled button" @clicked="onButtonClicked" />
+      <ElButton id="open-modal-1" :disabled="false" label="Open modal 1" @clicked="onOpenDialogClicked" />
 
-      <ElButton
-        id="open-modal-2"
-        :disabled="false"
-        label="Open modal 2"
-        @clicked="onOpenDialogClicked"
-      />
+      <ElButton id="open-modal-2" :disabled="false" label="Open modal 2" @clicked="onOpenDialogClicked" />
+    </div>
+
+    <ElText tag="h2" addCss="text-gray-500" text="ElModal examples:" />
+    <div class="p-6 border">
+      <ElModalVue testid="modal-1" title="Modal 1" message="This is a modal dialog" cancelLabel="Cancel"
+        confirmLabel="Confirm" primaryButtonType="primary" icon="" iconAddCss="text-red-500"
+        :is-visible="state.isModalVisible" @close="state.isModalVisible = false"
+        @confirm="state.isModalVisible = false" />
+      <ElModalVue testid="modal-2" title="Modal 2" message="This is a modal dialog" cancelLabel="Cancel"
+        confirmLabel="Confirm" primaryButtonType="primary" icon="" iconAddCss="text-red-500"
+        :is-visible="state.isModalVisible" @close="state.isModalVisible = false"
+        @confirm="state.isModalVisible = false" />
     </div>
 
     <ElText tag="h2" addCss="text-gray-500" text="ElToggle examples:" />
     <div class="p-6 border">
-      <ElToggle
-        id="toggle-a"
-        :checked="state.toggles.find((item) => item.id === 'toggle-b')?.checked || false"
-        :disabled="false"
-        @clicked="onToggleClicked"
-      />
-      <ElToggle
-        id="toggle-b"
-        :checked="state.toggles.find((item) => item.id === 'toggle-b')?.checked || false"
-        :disabled="true"
-        addCss="ml-2"
-        @clicked="onToggleClicked"
-      />
-      <ElToggle
-        id="toggle-c"
-        :checked="state.toggles.find((item) => item.id === 'toggle-c')?.checked || false"
-        :disabled="false"
-        addCss="ml-2"
-        @clicked="onToggleClicked"
-      />
+      <ElToggle id="toggle-a" :checked="state.toggles.find((item) => item.id === 'toggle-b')?.checked || false"
+        :disabled="false" @clicked="onToggleClicked" />
+      <ElToggle id="toggle-b" :checked="state.toggles.find((item) => item.id === 'toggle-b')?.checked || false"
+        :disabled="true" addCss="ml-2" @clicked="onToggleClicked" />
+      <ElToggle id="toggle-c" :checked="state.toggles.find((item) => item.id === 'toggle-c')?.checked || false"
+        :disabled="false" addCss="ml-2" @clicked="onToggleClicked" />
     </div>
   </div>
 </template>

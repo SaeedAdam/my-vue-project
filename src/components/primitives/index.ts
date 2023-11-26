@@ -8,7 +8,7 @@ import ElButton from "./buttons/ElButton.vue";
 import ElToggle from "./toggles/ElToggle.vue";
 
 // modals
-import { useModalDialog } from "./modals/useModalDialog";
+import ElModalVue from "./modals/ElModal.vue";
 
 export {
   // text
@@ -18,7 +18,7 @@ export {
   // toggles
   ElToggle,
   // moals
-  useModalDialog,
+  ElModalVue,
 };
 
 // icons
