@@ -12,6 +12,7 @@ import { useLocalization } from '@/localization'
 import PrimitivesView from '@/views/Primitives.view.vue'
 
 import { Counter, SampleComp } from 'my-component-library'
+import { randomid } from '@largescaleapps/my-js-helpers'
 
 // get what we need from useLocalization:
 const { t, locales, currentLocale, isLoadingLocale, changeLocale } = useLocalization()
@@ -37,7 +38,9 @@ watchEffect(() => {
 <template>
   <div class="home m-2 p-2 border-2 border-blue-300 rounded-lg">
     <div>
-      <SampleComp text="This is a sample component from my-component-library" />
+      <p>randomid() result (from my-js-helpers): {{ randomid() }}</p>
+
+      <SampleComp :text="`This is a sample component from my-component-library: ${ randomid() }`" />
       <Counter />
     </div>
     <div class="locale-selector">
